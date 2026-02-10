@@ -30,7 +30,7 @@
     "@trpc/server": "^11.0.0",
     "bcryptjs": "^3.0.3",
     "next": "^15.2.3",
-    "next-auth": "^5.0.0-beta.25",
+    "next-auth": "^5.0.0-beta.30",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "server-only": "^0.0.1",
@@ -53,6 +53,11 @@
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"
   },
+  "overrides": {
+    "@auth/core": "0.41.1"
+  },
+
+
   "ct3aMetadata": {
     "initVersion": "7.40.0"
   },

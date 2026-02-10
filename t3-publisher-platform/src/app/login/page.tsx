@@ -15,18 +15,23 @@ export default function LoginPage() {
     setError(null);
 
     try {
-      const res = await signIn("credentials", {
-        email,
-        password,
-        callbackUrl: "/redirect",
-      });
+     const res = (await signIn("credentials", {
+  email,
+  password,
+  redirect: false,
+  callbackUrl: "/redirect",
+})) as unknown as { error?: string | null; ok?: boolean; url?: string | null };
 
-      if (res?.error) {
-        setError("Invalid email or password");
-        setLoading(false);
-      }
+if (res?.error) {
+  setError("Invalid email or password");
+  setLoading(false);
+  return;
+}
+
+// نجاح: روح للرابط اللي رجعه أو لصفحة معينة
+window.location.href = res?.url ?? "/redirect";
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError("An error occurred during login");
       setLoading(false);
     }
   };
